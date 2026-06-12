@@ -1,0 +1,397 @@
+@page "/"
+@rendermode InteractiveServer
+@implements IDisposable
+@inject IJSRuntime JS
+
+<PageTitle>Hela Api Tea House</PageTitle>
+
+<div class="font-sans text-gray-800 bg-[#FFF9F0] overflow-x-hidden">
+    <SiteHeader />
+
+    @* Hero Section Carousel *@
+    <section class="relative h-[80vh] min-h-[500px] lg:h-[700px] bg-gray-900 overflow-hidden flex items-center">
+        @for (var i = 0; i < heroSlides.Count; i++)
+        {
+            var index = i;
+            var slide = heroSlides[index];
+            <div class="@($"absolute inset-0 transition-opacity duration-1000 ease-in-out {(index == heroIndex ? "opacity-100 z-10" : "opacity-0 z-0")}")">
+                <div class="@($"absolute inset-0 bg-cover bg-center transition-transform duration-[10000ms] ease-linear {(index == heroIndex ? "scale-110" : "scale-100")}")"
+                     style="@($"background-image: url('{slide.Image}')")"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-black/50 via-black/25 to-transparent"></div>
+
+                <div class="container mx-auto px-4 lg:px-12 h-full relative z-20 flex items-center">
+                    <div class="max-w-2xl mt-12 lg:mt-0 text-white w-full">
+                        @if (index == heroIndex)
+                        {
+                            <p class="anim-fade text-sm md:text-lg font-medium tracking-wider mb-2 flex items-center gap-2 text-gray-200">
+                                Welcome to <span class="text-[#D4A437] font-bold">Hela Api</span>
+                            </p>
+                            <h1 class="text-4xl md:text-5xl lg:text-7xl font-serif font-bold leading-[1.1] mb-4 md:mb-6 text-white drop-shadow-md">
+                                <div class="overflow-hidden pb-1"><div class="anim-title">@slide.Title1 <span class="text-[#D4A437]">@slide.Title2</span>,</div></div>
+                                <div class="overflow-hidden pb-1"><div class="anim-title">@slide.Title3 <span class="text-[#D4A437]">@slide.Title4</span> &amp;</div></div>
+                                <div class="overflow-hidden pb-1"><div class="anim-title">@slide.Title5 <span class="text-[#D4A437]">@slide.Title6</span></div></div>
+                            </h1>
+                            <p class="anim-fade text-base md:text-xl mb-8 md:mb-10 text-gray-200 font-light max-w-lg drop-shadow-sm">
+                                @slide.Subtitle
+                            </p>
+                            <div class="anim-fade flex flex-wrap gap-4">
+                                <a href="/products" class="bg-[#5E8C31] hover:bg-[#4a7227] text-white px-6 md:px-8 py-3 rounded-full font-semibold flex items-center gap-2 transition shadow-lg text-sm md:text-base">
+                                    <i data-lucide="leaf" width="18" height="18"></i> Shop Now
+                                </a>
+                                <a href="/products" class="border border-white/60 hover:border-white hover:bg-white/10 text-white px-6 md:px-8 py-3 rounded-full font-semibold flex items-center gap-2 transition backdrop-blur-sm text-sm md:text-base">
+                                    Explore More <i data-lucide="arrow-right" width="18" height="18"></i>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+
+        @* Carousel Indicators *@
+        <div class="absolute bottom-8 left-0 right-0 z-30 flex justify-center gap-3">
+            @for (var i = 0; i < heroSlides.Count; i++)
+            {
+                var idx = i;
+                <button @onclick="() => SetHeroIndex(idx)"
+                        class="@($"h-2 rounded-full transition-all duration-500 {(idx == heroIndex ? "w-8 bg-[#D4A437]" : "w-2 bg-white/50 hover:bg-white/80")}")"
+                        aria-label="@($"Go to slide {idx + 1}")">
+                </button>
+            }
+        </div>
+    </section>
+
+    @* Features Bar *@
+    <section class="bg-[#FFF9F0] py-8 md:py-12 border-b border-gray-200">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+                <div class="flex flex-col items-center text-center gap-2 sm:flex-row sm:items-center sm:text-left sm:gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 sm:bg-transparent sm:p-0 sm:shadow-none sm:border-none">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#DDE8C8] text-[#5E8C31] flex items-center justify-center shrink-0 border border-[#cfe0b6]">
+                        <i data-lucide="leaf" width="24" height="24" class="md:w-7 md:h-7"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-sm md:text-base">100% Pure Ceylon</h4>
+                        <p class="text-xs md:text-sm text-gray-500 leading-tight mt-1">Finest products from<br />Sri Lankan nature</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center text-center gap-2 sm:flex-row sm:items-center sm:text-left sm:gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 sm:bg-transparent sm:p-0 sm:shadow-none sm:border-none">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#FBEBD6] text-[#D4A437] flex items-center justify-center shrink-0 border border-[#f3dcb8]">
+                        <i data-lucide="star" width="24" height="24" class="md:w-7 md:h-7"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-sm md:text-base">Authentic &amp; Natural</h4>
+                        <p class="text-xs md:text-sm text-gray-500 leading-tight mt-1">No artificial additives,<br />just pure goodness</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center text-center gap-2 sm:flex-row sm:items-center sm:text-left sm:gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 sm:bg-transparent sm:p-0 sm:shadow-none sm:border-none">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#F3E3D6] text-[#B97A4A] flex items-center justify-center shrink-0 border border-[#e8cfba]">
+                        <i data-lucide="shield-check" width="24" height="24" class="md:w-7 md:h-7"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-sm md:text-base">Traditional Heritage</h4>
+                        <p class="text-xs md:text-sm text-gray-500 leading-tight mt-1">Made with traditional<br />Sri Lankan recipes</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center text-center gap-2 sm:flex-row sm:items-center sm:text-left sm:gap-4 bg-white p-4 rounded-xl shadow-sm border border-gray-100 sm:bg-transparent sm:p-0 sm:shadow-none sm:border-none">
+                    <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#DDE8C8] text-[#5E8C31] flex items-center justify-center shrink-0 border border-[#cfe0b6]">
+                        <i data-lucide="globe" width="24" height="24" class="md:w-7 md:h-7"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-sm md:text-base">Worldwide Delivery</h4>
+                        <p class="text-xs md:text-sm text-gray-500 leading-tight mt-1">Delivering freshness<br />to your door</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* Categories Section *@
+    <section class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                @* Category 1 *@
+                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden group cursor-pointer">
+                    <div class="absolute inset-0 bg-black/30 z-10 transition group-hover:bg-black/40"></div>
+                    <img src="https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
+                         alt="Teas"
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-center text-white">
+                        <span class="text-xs font-semibold tracking-widest text-[#D4A437] mb-2 uppercase animate__animated animate__fadeInUp">Premium</span>
+                        <h3 class="text-4xl md:text-5xl font-serif mb-3 md:mb-4">Teas</h3>
+                        <p class="text-sm max-w-[200px] text-gray-200 mb-6 leading-relaxed hidden sm:block">
+                            Finest Ceylon tea blends for every moment.
+                        </p>
+                        <button class="self-start bg-white/20 hover:bg-[#D4A437] hover:text-gray-900 border border-white/40 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition duration-300">
+                            Explore Teas <i data-lucide="arrow-right" width="14" height="14"></i>
+                        </button>
+                    </div>
+                </div>
+
+                @* Category 2 *@
+                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden group cursor-pointer">
+                    <div class="absolute inset-0 bg-[#B97A4A] mix-blend-multiply opacity-80 z-10 transition group-hover:opacity-60"></div>
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
+                         alt="Spices"
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-center text-white">
+                        <span class="text-xs font-semibold tracking-widest text-[#FFE8C2] mb-2 uppercase animate__animated animate__fadeInUp">Authentic</span>
+                        <h3 class="text-4xl md:text-5xl font-serif mb-3 md:mb-4">Spices</h3>
+                        <p class="text-sm max-w-[200px] text-gray-200 mb-6 leading-relaxed hidden sm:block">
+                            Pure, aromatic and carefully selected Sri Lankan spices.
+                        </p>
+                        <button class="self-start bg-white/20 hover:bg-[#FFE8C2] hover:text-gray-900 border border-white/40 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition duration-300">
+                            Explore Spices <i data-lucide="arrow-right" width="14" height="14"></i>
+                        </button>
+                    </div>
+                </div>
+
+                @* Category 3 *@
+                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden group cursor-pointer">
+                    <div class="absolute inset-0 bg-[#D4A437] mix-blend-multiply opacity-80 z-10 transition group-hover:opacity-60"></div>
+                    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
+                         alt="Foods"
+                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div class="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-center text-white">
+                        <span class="text-xs font-semibold tracking-widest text-[#FFF3DC] mb-2 uppercase animate__animated animate__fadeInUp">Traditional</span>
+                        <h3 class="text-4xl md:text-5xl font-serif mb-3 md:mb-4">Foods</h3>
+                        <p class="text-sm max-w-[200px] text-gray-200 mb-6 leading-relaxed hidden sm:block">
+                            Traditional Sri Lankan foods made with love and heritage.
+                        </p>
+                        <button class="self-start bg-white/20 hover:bg-[#FFF3DC] hover:text-gray-900 border border-white/40 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition duration-300">
+                            Explore Foods <i data-lucide="arrow-right" width="14" height="14"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    @* Best Sellers Section - Auto Slider *@
+    <section class="py-12 md:py-16 bg-[#FFF9F0] overflow-hidden">
+        <div class="container mx-auto px-4 lg:px-8">
+
+            <div class="text-center mb-8 md:mb-12">
+                <div class="flex items-center justify-center gap-2 text-[#5E8C31] font-semibold tracking-widest text-xs md:text-sm mb-3">
+                    <span class="w-6 md:w-8 h-[1px] bg-[#5E8C31]"></span>
+                    OUR BEST SELLERS
+                    <i data-lucide="leaf" width="14" height="14"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Handpicked Quality For You</h2>
+            </div>
+
+            <div class="relative group">
+                @* Slider Controls *@
+                <button @onclick="PrevProduct"
+                        class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-[#3F5F22] text-white rounded-full flex items-center justify-center z-10 shadow-lg hover:bg-[#3F5F22] transition md:opacity-0 group-hover:opacity-100">
+                    <i data-lucide="arrow-left" width="20" height="20"></i>
+                </button>
+                <button @onclick="NextProduct"
+                        class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-[#3F5F22] text-white rounded-full flex items-center justify-center z-10 shadow-lg hover:bg-[#3F5F22] transition md:opacity-0 group-hover:opacity-100">
+                    <i data-lucide="arrow-right" width="20" height="20"></i>
+                </button>
+
+                @* Carousel Track *@
+                <div class="overflow-hidden px-1 md:px-2 py-4">
+                    <div class="flex transition-transform duration-700 ease-in-out"
+                         style="@($"transform: translateX(-{(productIndex * (100.0 / itemsPerView)).ToString(System.Globalization.CultureInfo.InvariantCulture)}%)")">
+                        @foreach (var product in products)
+                        {
+                            <div class="flex-shrink-0 px-2 md:px-3" style="@($"width: {(100.0 / itemsPerView).ToString(System.Globalization.CultureInfo.InvariantCulture)}%")">
+                                <div class="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-gray-100 p-3 md:p-4 h-full flex flex-col group/card cursor-pointer hover:shadow-lg transition-all">
+                                    <div class="@($"h-40 md:h-48 {product.Bg} rounded-lg mb-4 flex items-center justify-center relative overflow-hidden")">
+                                        <img src="@product.Img" alt="@product.Name" class="absolute inset-0 w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" />
+                                        <div class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity text-gray-400 hover:text-red-500">
+                                            <i data-lucide="heart" width="16" height="16"></i>
+                                        </div>
+                                    </div>
+                                    <h4 class="font-bold text-gray-900 text-sm md:text-base mb-1 line-clamp-1 flex-grow">@product.Name</h4>
+                                    <div class="flex text-[#D4A437] text-[10px] md:text-xs mb-2">
+                                        <i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i>
+                                    </div>
+                                    <div class="flex justify-between items-center mt-2">
+                                        <span class="font-bold text-[#5E8C31] text-sm md:text-base">Rs. @product.Price</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                @* Dots for mobile visually *@
+                <div class="flex justify-center mt-6 gap-2">
+                    @for (var i = 0; i <= products.Count - itemsPerView; i++)
+                    {
+                        var idx = i;
+                        <button @onclick="() => SetProductIndex(idx)"
+                                class="@($"h-1.5 rounded-full transition-all duration-300 {(idx == productIndex ? "w-6 bg-[#5E8C31]" : "w-2 bg-gray-300")}")">
+                        </button>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    @* Why Choose Us *@
+    <section class="py-12 md:py-16 bg-[#DDE8C8] border-t border-b border-gray-200">
+        <div class="container mx-auto px-4 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+
+                @* Left Side *@
+                <div class="lg:w-1/3 text-center lg:text-left">
+                    <span class="text-[#B97A4A] font-semibold text-xs md:text-sm tracking-widest uppercase mb-3 block">WHY CHOOSE HELA API</span>
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 leading-tight mb-6 md:mb-8">
+                        Quality You Can Trust, Every Time.
+                    </h2>
+                    <button class="bg-[#3F5F22] hover:bg-[#5E8C31] text-white px-6 md:px-8 py-3 rounded-full font-semibold flex items-center gap-2 transition shadow-md mx-auto lg:mx-0">
+                        Learn More <i data-lucide="arrow-right" width="18" height="18"></i>
+                    </button>
+                </div>
+
+                @* Right Side - Features Grid *@
+                <div class="lg:w-2/3 grid grid-cols-2 gap-y-8 gap-x-4 md:gap-x-8 mt-8 lg:mt-0">
+
+                    <div class="text-center md:text-left flex flex-col items-center md:items-start p-4 bg-white rounded-xl shadow-sm border border-[#FFF9F0] lg:bg-transparent lg:shadow-none lg:border-none lg:p-0">
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#FFF9F0] shadow-sm flex items-center justify-center text-[#5E8C31] mb-3 md:mb-4">
+                            <i data-lucide="leaf" width="24" height="24" class="md:w-8 md:h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-base md:text-lg text-gray-900 mb-1 md:mb-2">100% Natural</h4>
+                        <p class="text-gray-500 text-xs md:text-sm">No artificial flavors<br />or preservatives.</p>
+                    </div>
+
+                    <div class="text-center md:text-left flex flex-col items-center md:items-start p-4 bg-white rounded-xl shadow-sm border border-[#FFF9F0] lg:bg-transparent lg:shadow-none lg:border-none lg:p-0">
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#FFF9F0] shadow-sm flex items-center justify-center text-[#5E8C31] mb-3 md:mb-4">
+                            <svg width="24" height="24" class="md:w-8 md:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3a4 4 0 0 0 4-4V6a2 2 0 0 1 4 0v5h3a2 2 0 0 1 2 2l-1 5a2 3 0 0 1-2 2h-7a3 3 0 0 1-3-3" /></svg>
+                        </div>
+                        <h4 class="font-bold text-base md:text-lg text-gray-900 mb-1 md:mb-2">Carefully Selected</h4>
+                        <p class="text-gray-500 text-xs md:text-sm">Handpicked from the<br />best sources.</p>
+                    </div>
+
+                    <div class="text-center md:text-left flex flex-col items-center md:items-start p-4 bg-white rounded-xl shadow-sm border border-[#FFF9F0] lg:bg-transparent lg:shadow-none lg:border-none lg:p-0">
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#FFF9F0] shadow-sm flex items-center justify-center text-[#5E8C31] mb-3 md:mb-4">
+                            <i data-lucide="shield-check" width="24" height="24" class="md:w-8 md:h-8"></i>
+                        </div>
+                        <h4 class="font-bold text-base md:text-lg text-gray-900 mb-1 md:mb-2">Export Quality</h4>
+                        <p class="text-gray-500 text-xs md:text-sm">International standards<br />you can rely on.</p>
+                    </div>
+
+                    <div class="text-center md:text-left flex flex-col items-center md:items-start p-4 bg-white rounded-xl shadow-sm border border-[#FFF9F0] lg:bg-transparent lg:shadow-none lg:border-none lg:p-0">
+                        <div class="w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#FFF9F0] shadow-sm flex items-center justify-center text-[#5E8C31] mb-3 md:mb-4">
+                            <svg width="24" height="24" class="md:w-8 md:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-base md:text-lg text-gray-900 mb-1 md:mb-2">Customer First</h4>
+                        <p class="text-gray-500 text-xs md:text-sm">Your satisfaction is<br />our top priority.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <SiteFooter />
+</div>
+
+@code {
+    private int heroIndex = 0;
+    private int productIndex = 0;
+    private int itemsPerView = 4;
+    private Timer? heroTimer;
+    private Timer? productTimer;
+    private DotNetObjectReference<Home>? dotNetRef;
+
+    private record HeroSlide(int Id, string Image, string Title1, string Title2, string Title3, string Title4, string Title5, string Title6, string Subtitle);
+    private record Product(int Id, string Name, string Price, string Img, string Bg);
+
+    private readonly List<HeroSlide> heroSlides = new()
+    {
+        new(1, "https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=2070&auto=format&fit=crop",
+            "Finest", "Harvest", "Direct to", "Cup", "Nature's", "Best",
+            "Experience the misty hills of Sri Lanka in every soothing sip."),
+        new(2, "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop",
+            "Aromatic", "Spices", "Rich", "Heritage", "Global", "Standards",
+            "Handpicked, organic spices that define the true Sri Lankan taste."),
+    };
+
+    private readonly List<Product> products = new()
+    {
+        new(1, "Ceylon Green Tea", "950.00", "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=400&auto=format&fit=crop", "bg-[#F1F5E9]"),
+        new(2, "Ceylon Black Tea BOP", "850.00", "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?q=80&w=400&auto=format&fit=crop", "bg-[#F1F5E9]"),
+        new(3, "Ceylon White Tea", "1,250.00", "https://plus.unsplash.com/premium_photo-1730985575682-ce2e30aa19b4?fm=jpg&q=60&w=400&auto=format&fit=crop", "bg-[#F1F5E9]"),
+        new(4, "Ceylon Cinnamon", "750.00", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Cinnamomum_verum_spices.jpg/500px-Cinnamomum_verum_spices.jpg", "bg-[#FBF1E4]"),
+        new(5, "Pure Black Pepper", "650.00", "https://plus.unsplash.com/premium_photo-1668447605666-716a18e15a1d?fm=jpg&q=60&w=400&auto=format&fit=crop", "bg-[#FBF1E4]"),
+        new(6, "Whole Cardamom", "1,100.00", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Cardamom_pods_-_Green_BNC.jpg/500px-Cardamom_pods_-_Green_BNC.jpg", "bg-[#FBF1E4]"),
+        new(7, "Premium Cloves", "890.00", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/2023_Go%C5%BAdziki.jpg/500px-2023_Go%C5%BAdziki.jpg", "bg-[#FBF1E4]"),
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            dotNetRef = DotNetObjectReference.Create(this);
+            await JS.InvokeVoidAsync("siteInterop.init", dotNetRef);
+            var width = await JS.InvokeAsync<int>("siteInterop.getItemsPerView");
+            if (width != itemsPerView)
+            {
+                itemsPerView = width;
+                StateHasChanged();
+            }
+
+            heroTimer = new Timer(_ => InvokeAsync(NextHero), null, 6000, 6000);
+            productTimer = new Timer(_ => InvokeAsync(NextProduct), null, 4000, 4000);
+        }
+
+        await JS.InvokeVoidAsync("siteInterop.createIcons");
+        await JS.InvokeVoidAsync("siteInterop.animateHero");
+    }
+
+    [JSInvokable]
+    public async Task OnResize(int width)
+    {
+        var newItemsPerView = width < 640 ? 2 : width < 1024 ? 3 : 4;
+        if (newItemsPerView != itemsPerView)
+        {
+            itemsPerView = newItemsPerView;
+            var maxIndex = products.Count - itemsPerView;
+            if (productIndex > maxIndex) productIndex = Math.Max(0, maxIndex);
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private void SetHeroIndex(int idx)
+    {
+        heroIndex = idx;
+    }
+
+    private void NextHero()
+    {
+        heroIndex = (heroIndex + 1) % heroSlides.Count;
+        StateHasChanged();
+    }
+
+    private void NextProduct()
+    {
+        var maxIndex = products.Count - itemsPerView;
+        productIndex = productIndex >= maxIndex ? 0 : productIndex + 1;
+        StateHasChanged();
+    }
+
+    private void PrevProduct()
+    {
+        var maxIndex = products.Count - itemsPerView;
+        productIndex = productIndex <= 0 ? maxIndex : productIndex - 1;
+    }
+
+    private void SetProductIndex(int idx)
+    {
+        productIndex = idx;
+    }
+
+    public void Dispose()
+    {
+        heroTimer?.Dispose();
+        productTimer?.Dispose();
+        dotNetRef?.Dispose();
+    }
+}
