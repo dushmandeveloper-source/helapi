@@ -34,5 +34,15 @@ window.siteInterop = {
                 { opacity: 1, scale: 1, duration: 1.5, delay: 0.3, ease: "power2.out", overwrite: true }
             );
         }
+    },
+
+    // Staggered reveal for product / category cards (.product-reveal)
+    animateProducts: function () {
+        if (window.gsap) {
+            window.gsap.fromTo('.product-reveal',
+                { y: 30, opacity: 0 },
+                { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: "power2.out", overwrite: true }
+            );
+        }
     }
 };

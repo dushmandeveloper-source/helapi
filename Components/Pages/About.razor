@@ -2,7 +2,7 @@
 @rendermode InteractiveServer
 @inject IJSRuntime JS
 
-<PageTitle>About Us - Hela Api Tea House</PageTitle>
+<PageTitle>About Us - Hela Api</PageTitle>
 
 <style>
     @@keyframes float {
@@ -32,7 +32,7 @@
 
         @* Hero Section *@
         <section class="relative py-24 md:py-32 bg-[#DDE8C8] flex items-center justify-center border-b border-white/50 overflow-hidden group">
-            <div class="absolute inset-0 bg-cover bg-center opacity-70 mix-blend-multiply animate-pan-bg" style="background-image: url('https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=2070&auto=format&fit=crop')"></div>
+            <div class="absolute inset-0 bg-cover bg-center opacity-70 mix-blend-multiply animate-pan-bg" style="background-image: url('/images/site/hero-tea.jpg')"></div>
 
             @* Decorative Floating Elements *@
             <div class="absolute top-12 left-10 text-[#5E8C31]/20 animate-float-slow hidden md:block">
@@ -43,8 +43,8 @@
             </div>
 
             <div class="relative z-10 text-center px-4 mt-8 md:mt-0">
-                <span class="text-white font-semibold text-sm md:text-base tracking-widest uppercase mb-3 block animate__animated animate__fadeInDown animate__delay-1s">Our Story</span>
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 animate__animated animate__fadeInUp">About Hela Api</h1>
+                <span class="text-white font-semibold text-sm md:text-base tracking-widest uppercase mb-3 block animate__animated animate__fadeInDown animate__delay-1s">Bringing Sri Lanka to the World</span>
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-4 animate__animated animate__fadeInUp">About Us</h1>
             </div>
         </section>
 
@@ -57,100 +57,148 @@
 
             <div class="container mx-auto px-4 lg:px-8 max-w-5xl relative z-10">
 
-                @* Main Intro & Positioning *@
+                @* Main Intro *@
                 <div class="mb-24">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#5E8C31] mb-6 text-center animate__animated animate__fadeIn">The Essence of Sri Lanka</h2>
-                    <p class="text-gray-700 leading-relaxed text-lg mb-12 text-center max-w-3xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
-                        Hela Api was created from a love for Sri Lanka — its vibrant flavors, its time-honored traditions, and its timeless spirit. We firmly believe that authenticity matters. From pure, premium Ceylon tea and aromatic spices to unique heritage foods and masterfully crafted cultural items, every single element under the Hela Api umbrella reflects the true, unadulterated essence of our home island. More than simply a commercial brand, Hela Api serves as our curated gateway to share Sri Lanka's distinct pride, absolute purity, and deep-rooted passion with the entire global community.
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#5E8C31] mb-6 text-center animate__animated animate__fadeIn">The Spirit of Sri Lanka</h2>
+                    <p class="text-gray-700 leading-relaxed text-lg mb-6 text-center max-w-3xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
+                        Hela Api is a premium Sri Lankan lifestyle brand dedicated to sharing the richness of Sri Lankan heritage with global audiences. Inspired by the island's traditions, craftsmanship, and natural abundance, we create authentic products and experiences that celebrate the spirit of Sri Lanka.
                     </p>
-
-                    <div class="bg-white border-l-4 border-[#D4A437] p-8 md:p-12 rounded-r-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(212,164,55,0.1)]">
-                        <div class="absolute -right-8 -top-8 text-[#DDE8C8] opacity-60 pointer-events-none animate-float-slow">
-                            <i data-lucide="leaf" width="160" height="160"></i>
-                        </div>
-                        <span class="text-[#D4A437] font-semibold text-xs tracking-widest uppercase mb-3 block relative z-10 flex items-center gap-2">
-                            <i data-lucide="star" width="14" height="14" class="animate-pulse"></i> Brand Positioning
-                        </span>
-                        <p class="text-xl md:text-2xl font-serif font-medium text-[#5E8C31] leading-relaxed italic relative z-10">
-                            "Hela Api is a premium Sri Lankan lifestyle brand that delivers authentic heritage through high-quality food, hospitality, and fashion — explicitly designed for modern global consumers who value tradition, purity, and a profound cultural identity."
-                        </p>
-                    </div>
+                    <p class="text-gray-700 leading-relaxed text-lg text-center max-w-3xl mx-auto animate__animated animate__fadeIn animate__delay-1s">
+                        From food and beverages to hospitality and fashion, every Hela Api offering reflects our commitment to quality, authenticity, and cultural pride. We believe that heritage is not only something to preserve—it is something to experience, share, and carry forward.
+                    </p>
                 </div>
 
-                @* Portfolio *@
+                @* Our Story *@
                 <div class="mb-24">
                     <div class="text-center mb-12">
                         <div class="flex items-center justify-center gap-2 text-[#5E8C31] font-semibold tracking-widest text-xs md:text-sm mb-3">
                             <span class="w-6 md:w-8 h-[1px] bg-[#5E8C31]"></span>
-                            PORTFOLIO
+                            OUR JOURNEY
                             <i data-lucide="leaf" width="14" height="14" class="animate-float"></i>
                         </div>
-                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Our Products</h2>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Our Story</h2>
                     </div>
 
-                    <div class="grid grid-cols-1 max-w-2xl mx-auto gap-8 lg:gap-12">
-                        @* Products Section *@
-                        <div class="bg-[#DDE8C8]/40 rounded-2xl p-8 border border-[#DDE8C8] transform transition-all duration-500 hover:-translate-y-3 hover:shadow-xl hover:bg-[#DDE8C8]/60 group">
-                            <div class="w-14 h-14 bg-[#5E8C31] text-white rounded-full flex items-center justify-center mb-8 shadow-lg animate-float">
-                                <i data-lucide="shopping-cart" width="24" height="24"></i>
-                            </div>
-                            <h3 class="text-2xl font-serif font-bold text-[#5E8C31] mb-6 border-b border-[#5E8C31]/20 pb-4 group-hover:border-[#5E8C31]/40 transition-colors">1. Products</h3>
-                            <ul class="space-y-6">
-                                <li class="transform transition-transform hover:translate-x-2 duration-300">
-                                    <h4 class="font-bold text-gray-900 flex items-center gap-2 mb-2">
-                                        <span class="text-[#D4A437]">✦</span> Premium Ceylon Tea
-                                    </h4>
-                                    <p class="text-sm text-gray-700 leading-relaxed ml-6">Carefully selected, high-grade single-origin teas embodying the distinct purity and rich character of Sri Lankan hills.</p>
-                                </li>
-                                <li class="transform transition-transform hover:translate-x-2 duration-300">
-                                    <h4 class="font-bold text-gray-900 flex items-center gap-2 mb-2">
-                                        <span class="text-[#D4A437]">✦</span> Pure Spices of Ceylon
-                                    </h4>
-                                    <p class="text-sm text-gray-700 leading-relaxed ml-6">Unadulterated, intensely aromatic spice selections sourced directly to bring authentic island flavors to local and global tables.</p>
-                                </li>
-                                <li class="transform transition-transform hover:translate-x-2 duration-300">
-                                    <h4 class="font-bold text-gray-900 flex items-center gap-2 mb-2">
-                                        <span class="text-[#D4A437]">✦</span> Hela Heritage Collection
-                                    </h4>
-                                    <p class="text-sm text-gray-700 leading-relaxed ml-6">Curated authentic foods and cultural items representing the heart of Sri Lankan heritage.</p>
-                                </li>
-                            </ul>
+                    <div class="bg-white border-l-4 border-[#D4A437] p-8 md:p-12 rounded-r-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(212,164,55,0.1)]">
+                        <div class="absolute -right-8 -top-8 text-[#DDE8C8] opacity-60 pointer-events-none animate-float-slow">
+                            <i data-lucide="book-open" width="160" height="160"></i>
                         </div>
-                    </div>
-
-                    <div class="text-center mt-10">
-                        <a href="/services" class="inline-flex items-center gap-2 bg-[#B97A4A] hover:bg-[#a4683c] text-white px-8 py-3 rounded-full font-semibold transition shadow-md">
-                            Explore Our Services <i data-lucide="arrow-right" width="18" height="18"></i>
-                        </a>
+                        <p class="text-gray-700 leading-relaxed text-lg mb-6 relative z-10">
+                            Founded with a passion for showcasing the true essence of Sri Lanka, Hela Api was created to bridge local traditions with modern global lifestyles. Our journey began with a simple vision: to present Sri Lankan culture in a way that is authentic, premium, and accessible to the world.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed text-lg relative z-10">
+                            Today, we continue to grow while remaining rooted in the values and traditions that define our identity.
+                        </p>
                     </div>
                 </div>
 
-                @* Core Values *@
-                <div>
+                @* Vision & Mission *@
+                <div class="mb-24">
                     <div class="text-center mb-12">
                         <div class="flex items-center justify-center gap-2 text-[#B97A4A] font-semibold tracking-widest text-xs md:text-sm mb-3">
                             <span class="w-6 md:w-8 h-[1px] bg-[#B97A4A]"></span>
-                            HELA API (PVT) LTD
+                            WHAT DRIVES US
                             <i data-lucide="leaf" width="14" height="14" class="animate-float-delayed"></i>
                         </div>
-                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#5E8C31]">Core Values</h2>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#5E8C31]">Vision &amp; Mission</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        @* Vision *@
+                        <div class="bg-[#DDE8C8]/40 rounded-2xl p-8 md:p-10 border border-[#DDE8C8] transform transition-all duration-500 hover:-translate-y-3 hover:shadow-xl hover:bg-[#DDE8C8]/60 group">
+                            <div class="w-14 h-14 bg-[#5E8C31] text-white rounded-full flex items-center justify-center mb-6 shadow-lg animate-float">
+                                <i data-lucide="eye" width="24" height="24"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-[#5E8C31] mb-4 border-b border-[#5E8C31]/20 pb-4 group-hover:border-[#5E8C31]/40 transition-colors">Our Vision</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                To become a globally respected Sri Lankan lifestyle brand that represents authenticity, heritage, and premium quality across food, hospitality, and fashion.
+                            </p>
+                        </div>
+
+                        @* Mission *@
+                        <div class="bg-[#DDE8C8]/40 rounded-2xl p-8 md:p-10 border border-[#DDE8C8] transform transition-all duration-500 hover:-translate-y-3 hover:shadow-xl hover:bg-[#DDE8C8]/60 group">
+                            <div class="w-14 h-14 bg-[#D4A437] text-white rounded-full flex items-center justify-center mb-6 shadow-lg animate-float">
+                                <i data-lucide="target" width="24" height="24"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-[#5E8C31] mb-4 border-b border-[#5E8C31]/20 pb-4 group-hover:border-[#5E8C31]/40 transition-colors">Our Mission</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Hela Api is committed to preserving and promoting the true essence of Sri Lanka by delivering authentic products and experiences rooted in real ingredients, traditional craftsmanship, and ethical sourcing.
+                            </p>
+                            <p class="text-gray-700 leading-relaxed">
+                                Through premium food and beverages, distinctive hospitality concepts, and Sri Lankan-made lifestyle products, we aim to connect local tradition with global markets while supporting sustainable growth and community empowerment.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                @* The Hela Api Experience *@
+                <div class="mb-24">
+                    <div class="text-center mb-12">
+                        <div class="flex items-center justify-center gap-2 text-[#5E8C31] font-semibold tracking-widest text-xs md:text-sm mb-3">
+                            <span class="w-6 md:w-8 h-[1px] bg-[#5E8C31]"></span>
+                            OUR LIFESTYLE CATEGORIES
+                            <i data-lucide="leaf" width="14" height="14" class="animate-float"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">The Hela Api Experience</h2>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach (var value in coreValues)
+                        @foreach (var category in lifestyleCategories)
                         {
                             <div class="bg-white p-6 md:p-8 rounded-xl border border-[#DDE8C8]/50 shadow-sm transform transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_10px_20px_rgb(94,140,49,0.08)] group relative overflow-hidden">
                                 <div class="absolute -right-4 -top-4 w-20 h-20 bg-[#FFF9F0] rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500 ease-out pointer-events-none"></div>
 
                                 <div class="w-14 h-14 bg-[#FFF9F0] rounded-full flex items-center justify-center text-[#D4A437] mb-5 group-hover:text-[#5E8C31] group-hover:bg-[#DDE8C8]/50 transition-all duration-300 relative z-10">
                                     <div class="transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-                                        <i data-lucide="@value.Icon" width="24" height="24"></i>
+                                        <i data-lucide="@category.Icon" width="24" height="24"></i>
                                     </div>
                                 </div>
-                                <h4 class="text-lg font-bold text-gray-900 mb-3 relative z-10 group-hover:text-[#5E8C31] transition-colors duration-300">@(value.Index). @value.Title</h4>
-                                <p class="text-sm text-gray-600 leading-relaxed relative z-10 group-hover:text-gray-800 transition-colors duration-300">@value.Description</p>
+                                <h4 class="text-lg font-bold text-gray-900 mb-3 relative z-10 group-hover:text-[#5E8C31] transition-colors duration-300">@category.Title</h4>
+                                <p class="text-sm text-gray-600 leading-relaxed relative z-10 group-hover:text-gray-800 transition-colors duration-300">@category.Description</p>
                             </div>
                         }
+                    </div>
+                </div>
+
+                @* More Than a Product *@
+                <div class="mb-24">
+                    <div class="text-center mb-12">
+                        <div class="flex items-center justify-center gap-2 text-[#B97A4A] font-semibold tracking-widest text-xs md:text-sm mb-3">
+                            <span class="w-6 md:w-8 h-[1px] bg-[#B97A4A]"></span>
+                            WHY HELA API
+                            <i data-lucide="leaf" width="14" height="14" class="animate-float-delayed"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-serif font-bold text-[#5E8C31]">More Than a Product</h2>
+                    </div>
+
+                    <div class="max-w-3xl mx-auto space-y-6">
+                        <p class="text-gray-700 leading-relaxed text-lg text-center font-serif italic text-[#5E8C31]">
+                            At Hela Api, every product tells a story.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            Each item represents the richness of Sri Lankan heritage, the dedication of local communities, the craftsmanship passed down through generations, and the hard work of those who bring these traditions to life.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            What we offer is more than a product—it is a reflection of culture, identity, and the collective effort of the people behind it. By choosing Hela Api, you are supporting authentic traditions, empowering local livelihoods, and celebrating the value of Sri Lankan craftsmanship and heritage.
+                        </p>
+                        <p class="text-gray-700 leading-relaxed text-lg">
+                            Every purchase is a connection to Sri Lanka, its people, and their story.
+                        </p>
+                    </div>
+                </div>
+
+                @* More Than a Brand *@
+                <div>
+                    <div class="bg-white border-l-4 border-[#D4A437] p-8 md:p-12 rounded-r-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden transform transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(212,164,55,0.1)]">
+                        <div class="absolute -right-8 -top-8 text-[#DDE8C8] opacity-60 pointer-events-none animate-float-slow">
+                            <i data-lucide="leaf" width="160" height="160"></i>
+                        </div>
+                        <span class="text-[#D4A437] font-semibold text-xs tracking-widest uppercase mb-3 block relative z-10 flex items-center gap-2">
+                            <i data-lucide="star" width="14" height="14" class="animate-pulse"></i> More Than a Brand
+                        </span>
+                        <p class="text-xl md:text-2xl font-serif font-medium text-[#5E8C31] leading-relaxed italic relative z-10">
+                            "At Hela Api, we are more than a brand—we are a celebration of Sri Lankan heritage, culture, and craftsmanship, shared with the world through products and experiences that inspire connection, authenticity, and pride."
+                        </p>
                     </div>
                 </div>
 
@@ -162,16 +210,16 @@
 </div>
 
 @code {
-    private record CoreValue(int Index, string Title, string Icon, string Description);
+    private record LifestyleCategory(string Title, string Icon, string Description);
 
-    private readonly List<CoreValue> coreValues = new()
+    private readonly List<LifestyleCategory> lifestyleCategories = new()
     {
-        new(1, "Authenticity", "check-circle", "We honor real ingredients, real craftsmanship, and real traditions. There are no artificial shortcuts taken — we offer only genuine, uncompromised Sri Lankan quality."),
-        new(2, "Heritage Preservation", "shield-check", "We celebrate, actively protect, and sustainably pass down Sri Lanka's vast cultural, agricultural, and culinary legacy for future generations to cherish."),
-        new(3, "Premium Quality", "trophy", "We are fully committed to uncompromising standards across our entire workflow—from sourcing and rigorous production to refined presentation and customer experiences."),
-        new(4, "Integrity & Transparency", "heart", "We conduct our business ethically, responsibly, and with profound respect for our growing network of local partners, global customers, and communities."),
-        new(5, "Sustainability", "leaf", "We proactively support local smallholder farmers, traditional artisans, and responsible production methodologies that safeguard our pristine natural environment."),
-        new(6, "Innovation with Respect", "star", "We modernize tradition without stripping away its soul — seamlessly blending ancient island heritage with contemporary global consumer appeal."),
+        new("Tea & Beverages", "coffee", "Premium Ceylon tea and traditional Sri Lankan beverages crafted from nature."),
+        new("Herbs & Wellness", "sprout", "Natural herbs and wellness products inspired by Sri Lanka's traditional knowledge and holistic lifestyle."),
+        new("Spices & Heritage Foods", "flame", "Authentic spices, seasonings, and traditional foods that bring the flavors of Sri Lanka to the world."),
+        new("Hospitality & Dining", "utensils", "Sri Lankan-inspired hospitality experiences that celebrate culture, warmth, and authentic cuisine."),
+        new("Fashion & Lifestyle", "shirt", "Lifestyle and fashion products that blend Sri Lankan heritage with contemporary design."),
+        new("Heritage Collections", "gift", "Curated products that showcase the craftsmanship, culture, and traditions of Sri Lanka."),
     };
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

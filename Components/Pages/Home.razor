@@ -108,129 +108,86 @@
     @* Categories Section *@
     <section class="py-12 md:py-16 bg-white">
         <div class="container mx-auto px-4 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                @* Category 1 *@
-                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden group cursor-pointer">
-                    <div class="absolute inset-0 bg-black/30 z-10 transition group-hover:bg-black/40"></div>
-                    <img src="https://images.unsplash.com/photo-1597318181409-cf64d0b5d8a2?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
-                         alt="Teas"
-                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div class="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-center text-white">
-                        <span class="text-xs font-semibold tracking-widest text-[#D4A437] mb-2 uppercase animate__animated animate__fadeInUp">Premium</span>
-                        <h3 class="text-4xl md:text-5xl font-serif mb-3 md:mb-4">Teas</h3>
-                        <p class="text-sm max-w-[200px] text-gray-200 mb-6 leading-relaxed hidden sm:block">
-                            Finest Ceylon tea blends for every moment.
-                        </p>
-                        <button class="self-start bg-white/20 hover:bg-[#D4A437] hover:text-gray-900 border border-white/40 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition duration-300">
-                            Explore Teas <i data-lucide="arrow-right" width="14" height="14"></i>
-                        </button>
-                    </div>
+            <div class="text-center mb-10">
+                <div class="flex items-center justify-center gap-2 text-[#5E8C31] font-semibold tracking-widest text-xs md:text-sm mb-3">
+                    <span class="w-6 md:w-8 h-[1px] bg-[#5E8C31]"></span>
+                    SHOP BY CATEGORY
+                    <i data-lucide="leaf" width="14" height="14"></i>
                 </div>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Explore Our Collections</h2>
+            </div>
 
-                @* Category 2 *@
-                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden group cursor-pointer">
-                    <div class="absolute inset-0 bg-[#B97A4A] mix-blend-multiply opacity-80 z-10 transition group-hover:opacity-60"></div>
-                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
-                         alt="Spices"
-                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div class="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-center text-white">
-                        <span class="text-xs font-semibold tracking-widest text-[#FFE8C2] mb-2 uppercase animate__animated animate__fadeInUp">Authentic</span>
-                        <h3 class="text-4xl md:text-5xl font-serif mb-3 md:mb-4">Spices</h3>
-                        <p class="text-sm max-w-[200px] text-gray-200 mb-6 leading-relaxed hidden sm:block">
-                            Pure, aromatic and carefully selected Sri Lankan spices.
-                        </p>
-                        <button class="self-start bg-white/20 hover:bg-[#FFE8C2] hover:text-gray-900 border border-white/40 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition duration-300">
-                            Explore Spices <i data-lucide="arrow-right" width="14" height="14"></i>
-                        </button>
-                    </div>
-                </div>
-
-                @* Category 3 *@
-                <div class="relative h-64 md:h-80 rounded-2xl overflow-hidden group cursor-pointer">
-                    <div class="absolute inset-0 bg-[#D4A437] mix-blend-multiply opacity-80 z-10 transition group-hover:opacity-60"></div>
-                    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&amp;w=800&amp;auto=format&amp;fit=crop"
-                         alt="Foods"
-                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                    <div class="absolute inset-0 z-20 p-6 md:p-8 flex flex-col justify-center text-white">
-                        <span class="text-xs font-semibold tracking-widest text-[#FFF3DC] mb-2 uppercase animate__animated animate__fadeInUp">Traditional</span>
-                        <h3 class="text-4xl md:text-5xl font-serif mb-3 md:mb-4">Foods</h3>
-                        <p class="text-sm max-w-[200px] text-gray-200 mb-6 leading-relaxed hidden sm:block">
-                            Traditional Sri Lankan foods made with love and heritage.
-                        </p>
-                        <button class="self-start bg-white/20 hover:bg-[#FFF3DC] hover:text-gray-900 border border-white/40 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-semibold flex items-center gap-2 transition duration-300">
-                            Explore Foods <i data-lucide="arrow-right" width="14" height="14"></i>
-                        </button>
-                    </div>
-                </div>
-
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach (var cat in ProductCatalog.Categories)
+                {
+                    <a href="/products/@cat.Slug" class="relative h-60 md:h-72 rounded-2xl overflow-hidden group cursor-pointer block">
+                        <div class="absolute inset-0 bg-black/30 z-10 transition group-hover:bg-black/45"></div>
+                        <img src="@cat.Image" alt="@cat.ShortName"
+                             class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 z-20 p-6 md:p-7 flex flex-col justify-end text-white">
+                            <div class="w-11 h-11 bg-white/90 rounded-full flex items-center justify-center text-[#5E8C31] shadow mb-3">
+                                <i data-lucide="@cat.Icon" width="22" height="22"></i>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-serif font-bold mb-1">@cat.ShortName</h3>
+                            <p class="text-sm text-gray-200 mb-4 leading-relaxed line-clamp-2 max-w-xs">@cat.CardText</p>
+                            <span class="self-start bg-white/20 group-hover:bg-[#D4A437] group-hover:text-gray-900 border border-white/40 backdrop-blur-sm px-5 py-2 rounded-full text-sm font-semibold inline-flex items-center gap-2 transition duration-300">
+                                Explore <i data-lucide="arrow-right" width="14" height="14"></i>
+                            </span>
+                        </div>
+                    </a>
+                }
             </div>
         </div>
     </section>
 
-    @* Best Sellers Section - Auto Slider *@
+    @* Our Products Preview - Tabbed (5 per category + See More) *@
     <section class="py-12 md:py-16 bg-[#FFF9F0] overflow-hidden">
         <div class="container mx-auto px-4 lg:px-8">
 
-            <div class="text-center mb-8 md:mb-12">
+            <div class="text-center mb-8 md:mb-10">
                 <div class="flex items-center justify-center gap-2 text-[#5E8C31] font-semibold tracking-widest text-xs md:text-sm mb-3">
                     <span class="w-6 md:w-8 h-[1px] bg-[#5E8C31]"></span>
-                    OUR BEST SELLERS
+                    OUR PRODUCTS
                     <i data-lucide="leaf" width="14" height="14"></i>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">Handpicked Quality For You</h2>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900">A Taste of Each Collection</h2>
             </div>
 
-            <div class="relative group">
-                @* Slider Controls *@
-                <button @onclick="PrevProduct"
-                        class="absolute -left-2 md:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-[#3F5F22] text-white rounded-full flex items-center justify-center z-10 shadow-lg hover:bg-[#3F5F22] transition md:opacity-0 group-hover:opacity-100">
-                    <i data-lucide="arrow-left" width="20" height="20"></i>
-                </button>
-                <button @onclick="NextProduct"
-                        class="absolute -right-2 md:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-[#3F5F22] text-white rounded-full flex items-center justify-center z-10 shadow-lg hover:bg-[#3F5F22] transition md:opacity-0 group-hover:opacity-100">
-                    <i data-lucide="arrow-right" width="20" height="20"></i>
-                </button>
-
-                @* Carousel Track *@
-                <div class="overflow-hidden px-1 md:px-2 py-4">
-                    <div class="flex transition-transform duration-700 ease-in-out"
-                         style="@($"transform: translateX(-{(productIndex * (100.0 / itemsPerView)).ToString(System.Globalization.CultureInfo.InvariantCulture)}%)")">
-                        @foreach (var product in products)
-                        {
-                            <div class="flex-shrink-0 px-2 md:px-3" style="@($"width: {(100.0 / itemsPerView).ToString(System.Globalization.CultureInfo.InvariantCulture)}%")">
-                                <div class="bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-gray-100 p-3 md:p-4 h-full flex flex-col group/card cursor-pointer hover:shadow-lg transition-all">
-                                    <div class="@($"h-40 md:h-48 {product.Bg} rounded-lg mb-4 flex items-center justify-center relative overflow-hidden")">
-                                        <img src="@product.Img" alt="@product.Name" class="absolute inset-0 w-full h-full object-cover group-hover/card:scale-110 transition-transform duration-500" />
-                                        <div class="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity text-gray-400 hover:text-red-500">
-                                            <i data-lucide="heart" width="16" height="16"></i>
-                                        </div>
-                                    </div>
-                                    <h4 class="font-bold text-gray-900 text-sm md:text-base mb-1 line-clamp-1 flex-grow">@product.Name</h4>
-                                    <div class="flex text-[#D4A437] text-[10px] md:text-xs mb-2">
-                                        <i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i><i data-lucide="star" fill="currentColor" width="12" height="12"></i>
-                                    </div>
-                                    <div class="flex justify-between items-center mt-2">
-                                        <span class="font-bold text-[#5E8C31] text-sm md:text-base">Rs. @product.Price</span>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-
-                @* Dots for mobile visually *@
-                <div class="flex justify-center mt-6 gap-2">
-                    @for (var i = 0; i <= products.Count - itemsPerView; i++)
-                    {
-                        var idx = i;
-                        <button @onclick="() => SetProductIndex(idx)"
-                                class="@($"h-1.5 rounded-full transition-all duration-300 {(idx == productIndex ? "w-6 bg-[#5E8C31]" : "w-2 bg-gray-300")}")">
-                        </button>
-                    }
-                </div>
-
+            @* Category Tabs *@
+            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
+                @foreach (var cat in ProductCatalog.Categories)
+                {
+                    <button @onclick="() => SelectCategory(cat.Slug)"
+                            class="@($"px-4 md:px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-300 inline-flex items-center gap-2 {(cat.Slug == selectedSlug ? "bg-[#5E8C31] text-white border-[#5E8C31] shadow" : "bg-white text-gray-600 border-[#DDE8C8] hover:border-[#5E8C31] hover:text-[#5E8C31]")}")">
+                        <i data-lucide="@cat.Icon" width="15" height="15"></i> @cat.ShortName
+                    </button>
+                }
             </div>
+
+            @* Preview grid: 5 products *@
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                @foreach (var item in PreviewItems)
+                {
+                    <a href="/products/@selectedSlug" class="product-reveal bg-white rounded-xl shadow-[0_4px_20px_rgb(0,0,0,0.05)] border border-gray-100 overflow-hidden group flex flex-col hover:shadow-lg transition-all">
+                        <div class="relative h-32 md:h-40 overflow-hidden bg-[#DDE8C8]/30">
+                            <img src="@item.Image" alt="@item.Name" loading="lazy"
+                                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                        </div>
+                        <div class="p-3 md:p-4 flex flex-col flex-grow">
+                            <h4 class="font-bold text-gray-900 text-sm mb-1 line-clamp-1 group-hover:text-[#5E8C31] transition-colors">@item.Name</h4>
+                            <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">@item.Description</p>
+                        </div>
+                    </a>
+                }
+            </div>
+
+            @* See More *@
+            <div class="text-center mt-10">
+                <a href="/products/@selectedSlug" class="inline-flex items-center gap-2 bg-[#B97A4A] hover:bg-[#a4683c] text-white px-7 py-3 rounded-full font-semibold transition shadow-md">
+                    See All @Current.ItemCount @Current.ShortName Products <i data-lucide="arrow-right" width="18" height="18"></i>
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -245,9 +202,9 @@
                     <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 leading-tight mb-6 md:mb-8">
                         Quality You Can Trust, Every Time.
                     </h2>
-                    <button class="bg-[#3F5F22] hover:bg-[#5E8C31] text-white px-6 md:px-8 py-3 rounded-full font-semibold flex items-center gap-2 transition shadow-md mx-auto lg:mx-0">
+                    <a href="/about" class="bg-[#3F5F22] hover:bg-[#5E8C31] text-white px-6 md:px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 transition shadow-md mx-auto lg:mx-0">
                         Learn More <i data-lucide="arrow-right" width="18" height="18"></i>
-                    </button>
+                    </a>
                 </div>
 
                 @* Right Side - Features Grid *@
@@ -295,35 +252,34 @@
 
 @code {
     private int heroIndex = 0;
-    private int productIndex = 0;
-    private int itemsPerView = 4;
     private Timer? heroTimer;
-    private Timer? productTimer;
     private DotNetObjectReference<Home>? dotNetRef;
 
+    private string selectedSlug = ProductCatalog.Categories[0].Slug;
+    private bool animateProductsNext = true;
+    private bool animateHeroNext = true;
+
+    private ProductCategory Current => ProductCatalog.BySlug(selectedSlug)!;
+    private IEnumerable<ProductItem> PreviewItems => Current.AllItems.Take(5);
+
     private record HeroSlide(int Id, string Image, string Title1, string Title2, string Title3, string Title4, string Title5, string Title6, string Subtitle);
-    private record Product(int Id, string Name, string Price, string Img, string Bg);
 
     private readonly List<HeroSlide> heroSlides = new()
     {
-        new(1, "https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=2070&auto=format&fit=crop",
+        new(1, "/images/site/hero-tea.jpg",
             "Finest", "Harvest", "Direct to", "Cup", "Nature's", "Best",
             "Experience the misty hills of Sri Lanka in every soothing sip."),
-        new(2, "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop",
+        new(2, "/images/site/hero-spices.jpg",
             "Aromatic", "Spices", "Rich", "Heritage", "Global", "Standards",
             "Handpicked, organic spices that define the true Sri Lankan taste."),
     };
 
-    private readonly List<Product> products = new()
+    private void SelectCategory(string slug)
     {
-        new(1, "Ceylon Green Tea", "950.00", "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=400&auto=format&fit=crop", "bg-[#F1F5E9]"),
-        new(2, "Ceylon Black Tea BOP", "850.00", "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?q=80&w=400&auto=format&fit=crop", "bg-[#F1F5E9]"),
-        new(3, "Ceylon White Tea", "1,250.00", "https://plus.unsplash.com/premium_photo-1730985575682-ce2e30aa19b4?fm=jpg&q=60&w=400&auto=format&fit=crop", "bg-[#F1F5E9]"),
-        new(4, "Ceylon Cinnamon", "750.00", "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Cinnamomum_verum_spices.jpg/500px-Cinnamomum_verum_spices.jpg", "bg-[#FBF1E4]"),
-        new(5, "Pure Black Pepper", "650.00", "https://plus.unsplash.com/premium_photo-1668447605666-716a18e15a1d?fm=jpg&q=60&w=400&auto=format&fit=crop", "bg-[#FBF1E4]"),
-        new(6, "Whole Cardamom", "1,100.00", "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Cardamom_pods_-_Green_BNC.jpg/500px-Cardamom_pods_-_Green_BNC.jpg", "bg-[#FBF1E4]"),
-        new(7, "Premium Cloves", "890.00", "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/2023_Go%C5%BAdziki.jpg/500px-2023_Go%C5%BAdziki.jpg", "bg-[#FBF1E4]"),
-    };
+        if (selectedSlug == slug) return;
+        selectedSlug = slug;
+        animateProductsNext = true;
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -331,67 +287,43 @@
         {
             dotNetRef = DotNetObjectReference.Create(this);
             await JS.InvokeVoidAsync("siteInterop.init", dotNetRef);
-            var width = await JS.InvokeAsync<int>("siteInterop.getItemsPerView");
-            if (width != itemsPerView)
-            {
-                itemsPerView = width;
-                StateHasChanged();
-            }
-
             heroTimer = new Timer(_ => InvokeAsync(NextHero), null, 6000, 6000);
-            productTimer = new Timer(_ => InvokeAsync(NextProduct), null, 4000, 4000);
         }
 
         await JS.InvokeVoidAsync("siteInterop.createIcons");
-        await JS.InvokeVoidAsync("siteInterop.animateHero");
+
+        if (animateHeroNext)
+        {
+            animateHeroNext = false;
+            await JS.InvokeVoidAsync("siteInterop.animateHero");
+        }
+
+        if (animateProductsNext)
+        {
+            animateProductsNext = false;
+            await JS.InvokeVoidAsync("siteInterop.animateProducts");
+        }
     }
 
     [JSInvokable]
-    public async Task OnResize(int width)
-    {
-        var newItemsPerView = width < 640 ? 2 : width < 1024 ? 3 : 4;
-        if (newItemsPerView != itemsPerView)
-        {
-            itemsPerView = newItemsPerView;
-            var maxIndex = products.Count - itemsPerView;
-            if (productIndex > maxIndex) productIndex = Math.Max(0, maxIndex);
-            await InvokeAsync(StateHasChanged);
-        }
-    }
+    public Task OnResize(int width) => Task.CompletedTask;
 
     private void SetHeroIndex(int idx)
     {
         heroIndex = idx;
+        animateHeroNext = true;
     }
 
     private void NextHero()
     {
         heroIndex = (heroIndex + 1) % heroSlides.Count;
+        animateHeroNext = true;
         StateHasChanged();
-    }
-
-    private void NextProduct()
-    {
-        var maxIndex = products.Count - itemsPerView;
-        productIndex = productIndex >= maxIndex ? 0 : productIndex + 1;
-        StateHasChanged();
-    }
-
-    private void PrevProduct()
-    {
-        var maxIndex = products.Count - itemsPerView;
-        productIndex = productIndex <= 0 ? maxIndex : productIndex - 1;
-    }
-
-    private void SetProductIndex(int idx)
-    {
-        productIndex = idx;
     }
 
     public void Dispose()
     {
         heroTimer?.Dispose();
-        productTimer?.Dispose();
         dotNetRef?.Dispose();
     }
 }
