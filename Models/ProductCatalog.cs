@@ -49,6 +49,11 @@ public static class ProductCatalog
     private const string ImgGotukola = Dir + "gotukola.jpg";
     private const string ImgBelimal = Dir + "belimal.jpg";
     private const string ImgPolpala = Dir + "polpala.jpg";
+    private const string ImgIramusu = Dir + "ranawara.jpg";
+    private const string ImgKothalaHimbutu = Dir + "gotukola.jpg";
+    private const string ImgVenivelgeta = Dir + "moringa.jpg";
+    private const string ImgHathawariya = Dir + "polpala.jpg";
+    private const string ImgBaelFruit = Dir + "wood-apple.jpg";
     private const string ImgLemongrassTea = Dir + "lemongrass-tea.jpg";
     private const string ImgLemon = Dir + "lemon.jpg";
     private const string ImgMango = Dir + "mango.jpg";
@@ -75,6 +80,7 @@ public static class ProductCatalog
     private const string ImgFenugreek = Dir + "fenugreek.jpg";
     private const string ImgGoraka = Dir + "goraka.jpg";
     private const string ImgTamarind = Dir + "tamarind.jpg";
+    private const string ImgDriedGinger = Dir + "ginger.jpg";
     private const string ImgStarAnise = Dir + "star-anise.jpg";
     private const string ImgNutmeg = Dir + "nutmeg.jpg";
     private const string ImgMace = Dir + "mace.jpg";
@@ -150,7 +156,7 @@ public static class ProductCatalog
                     new("Ginger Tea", "Warm and comforting with a naturally spicy kick.", ImgGinger),
                     new("Peach Tea", "Smooth and fruity with a delicate peach aroma.", ImgPeach),
                     new("Vanilla Tea", "Rich and creamy with a soft vanilla sweetness.", ImgVanilla),
-                    new("Mixed Fruit Tea", "An exciting blend of fruity flavors for a refreshing experience.", ImgMixedFruit),
+                    new("Fruits Blend Tea", "An exciting blend of fruity flavors for a refreshing experience.", ImgMixedFruit),
                 }),
             }),
 
@@ -186,6 +192,7 @@ public static class ProductCatalog
                     new("Mace", "The delicate outer covering of nutmeg, offering a lighter, more refined flavor. Adds a subtle warmth and aroma to sauces, curries, and spice mixes.", ImgMace),
                     new("Fennel Seeds", "Naturally sweet and refreshing seeds with a light licorice taste. Commonly used after meals and in cooking for aroma and digestion.", ImgFennel),
                     new("Dried Curry Leaves", "Aromatic leaves that bring a signature Sri Lankan flavor. Widely used in tempering, curries, and spice bases for a rich herbal note.", ImgCurryLeaves),
+                    new("Dried Ginger pieces", "Naturally dried for lasting flavor, these ginger pieces are both aromatic and versatile. They bring warmth and character to a wide range of dishes.", ImgDriedGinger),
                 }),
                 new("Sri Lankan Spice Blends", new()
                 {
@@ -206,14 +213,17 @@ public static class ProductCatalog
             {
                 new(null, new()
                 {
-                    new("Moringa", "Nutrient-rich moringa leaves offering a refreshing character and natural goodness.", ImgMoringa),
-                    new("Gotukola", "An ancient Sri Lankan herb appreciated for its fresh character and long-standing place in local tradition.", ImgGotukola),
-                    new("Ranawara", "Traditional Sri Lankan herb known for its delicate, refreshing character.", ImgRanawara),
-                    new("Belimal", "Dried bael flowers offering a gentle aroma and naturally pleasant character.", ImgBelimal),
-                    new("Polpala", "Traditional herb valued for its light, refreshing nature and natural wellness appeal.", ImgPolpala),
-                    new("Lemongrass", "Refreshing herb with a bright citrus fragrance and taste.", ImgLemongrass),
-                    new("Pandan Leaves (Rampe)", "Traditional Sri Lankan aromatic leaves used to enhance flavor and fragrance.", ImgPandan),
-                    new("Dried Curry Leaves", "Aromatic leaves that bring a signature Sri Lankan flavor, widely used in tempering and curries.", ImgCurryLeaves),
+                    new("Gotu Kola", "A treasured Sri Lankan herb traditionally enjoyed for its refreshing taste and natural wellness benefits.", ImgGotukola),
+                    new("Moringa", "Nutrient-rich leaves valued for their versatility and long-standing place in traditional Sri Lankan living.", ImgMoringa),
+                    new("Ranawara", "A traditional herbal ingredient commonly enjoyed as a soothing and refreshing herbal infusion.", ImgRanawara),
+                    new("Bel Leaves", "Naturally aromatic leaves traditionally brewed into a refreshing herbal beverage.", ImgBelimal),
+                    new("Iramusu", "A fragrant root traditionally used to prepare cooling and refreshing herbal drinks.", ImgIramusu),
+                    new("Polpala", "A cherished Sri Lankan herb widely enjoyed as a light and refreshing herbal tea.", ImgPolpala),
+                    new("Kothala Himbutu", "A traditional forest herb valued for its place in Sri Lankan herbal traditions.", ImgKothalaHimbutu),
+                    new("Venivelgeta", "A distinctive herb traditionally used in herbal preparations and wellness beverages.", ImgVenivelgeta),
+                    new("Hathawariya", "A respected traditional herb appreciated for its long history in Sri Lankan wellness practices.", ImgHathawariya),
+                    new("Nelli (Indian Gooseberry)", "A naturally tangy fruit celebrated for its refreshing flavor and nutritional value.", ImgNelli),
+                    new("Bael Fruit (Beli)", "A naturally sweet fruit traditionally enjoyed in refreshing beverages and herbal preparations.", ImgBaelFruit),
                 }),
             }),
 
@@ -240,6 +250,7 @@ public static class ProductCatalog
                     new("Wambatu Moju", "Traditional sweet and sour eggplant pickle with rich Sri Lankan spices.", ImgBrinjalMoju),
                     new("Prawn Badum (Isso Badum)", "Crispy seasoned prawns prepared with authentic Sri Lankan flavors.", ImgPrawns),
                     new("Fish Ambul Thiyal", "Traditional sour fish curry known for its distinctive tangy taste and long-lasting freshness.", ImgAmbulThiyal),
+                    new("Hela Achcharu", "A traditional Sri Lankan mixed vegetable pickle crafted with fresh ingredients and authentic local spices. Bursting with sweet, tangy, and spicy flavors, it brings the true taste of Sri Lankan heritage to every meal.", ImgMalayPickle),
                 }),
             }),
 
