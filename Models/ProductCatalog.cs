@@ -80,7 +80,7 @@ public static class ProductCatalog
     private const string ImgFenugreek = Dir + "fenugreek.jpg";
     private const string ImgGoraka = Dir + "goraka.jpg";
     private const string ImgTamarind = Dir + "tamarind.jpg";
-    private const string ImgDriedGinger = Dir + "ginger.jpg";
+    private const string ImgDriedGinger = Dir + "dried-ginger.png";
     private const string ImgStarAnise = Dir + "star-anise.jpg";
     private const string ImgNutmeg = Dir + "nutmeg.jpg";
     private const string ImgMace = Dir + "mace.jpg";
