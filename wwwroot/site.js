@@ -17,9 +17,12 @@ window.siteInterop = {
         });
     },
 
-    createIcons: function () {
+    createIcons: function (retriesLeft) {
+        if (retriesLeft === undefined) retriesLeft = 20;
         if (window.lucide) {
             window.lucide.createIcons();
+        } else if (retriesLeft > 0) {
+            setTimeout(() => this.createIcons(retriesLeft - 1), 100);
         }
     },
 
