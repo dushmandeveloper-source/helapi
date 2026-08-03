@@ -4,6 +4,8 @@ public record ProductItem(string Name, string Description, string Image);
 
 public record ProductGroup(string? Title, List<ProductItem> Items);
 
+public record QualityPoint(string Icon, string Label, string Text);
+
 public record ProductCategory(
     string Slug,
     string Name,
@@ -12,7 +14,8 @@ public record ProductCategory(
     string CardText,
     string Tagline,
     string Image,
-    List<ProductGroup> Groups)
+    List<ProductGroup> Groups,
+    List<QualityPoint>? QualityPoints = null)
 {
     public IEnumerable<ProductItem> AllItems => Groups.SelectMany(g => g.Items);
     public int ItemCount => Groups.Sum(g => g.Items.Count);
@@ -158,6 +161,16 @@ public static class ProductCatalog
                     new("Vanilla Tea", "Rich and creamy with a soft vanilla sweetness.", ImgVanilla),
                     new("Fruits Blend Tea", "An exciting blend of fruity flavors for a refreshing experience.", ImgMixedFruit),
                 }),
+            },
+            new()
+            {
+                new("map-pin", "Origin", "Grown in Sri Lanka's highlands or low-country tea estates"),
+                new("leaf", "Leaf Grade", "Handpicked whole leaves / carefully graded tea (OP, BOP, etc.)"),
+                new("clock", "Freshness", "Packed soon after harvest to preserve aroma"),
+                new("sparkles", "Flavor Profile", "Natural strength, color, and authentic Ceylon taste"),
+                new("settings", "Processing", "Hygienically processed and carefully dried"),
+                new("shield-check", "No Additives", "100% pure tea with no artificial flavoring"),
+                new("badge-check", "Quality Control", "Tested for consistency in taste and aroma"),
             }),
 
         new("spices", "Hela Spice Collection", "Spices", "flame",
@@ -203,6 +216,16 @@ public static class ProductCatalog
                     new("Chicken Curry Powder", "A well-balanced blend designed for chicken dishes, offering a rich, savory taste with moderate heat and deep aroma.", ImgChickenCurry),
                     new("Seafood Curry Powder", "A flavorful mix created for seafood dishes, combining spices that enhance prawns, crab, and other seafood with a fragrant, spicy finish.", ImgSeafoodCurry),
                 }),
+            },
+            new()
+            {
+                new("map-pin", "Origin", "Sourced from trusted Sri Lankan farms"),
+                new("shield-check", "Purity", "100% pure spices with no fillers or additives"),
+                new("sparkles", "Aroma & Oil Content", "Naturally rich aroma and essential oils preserved"),
+                new("settings", "Processing", "Cleaned, sun-dried, and hygienically packed"),
+                new("flame", "Grinding", "Freshly ground for maximum flavor retention (if powder)"),
+                new("palette", "Color & Taste", "Natural vibrant color and strong authentic taste"),
+                new("badge-check", "Food Safety", "Strict hygiene and contamination control"),
             }),
 
         new("herbs", "Herbal Powders & Dried Herbs", "Herbs", "sprout",
@@ -225,6 +248,15 @@ public static class ProductCatalog
                     new("Nelli (Indian Gooseberry)", "A naturally tangy fruit celebrated for its refreshing flavor and nutritional value.", ImgNelli),
                     new("Bael Fruit (Beli)", "A naturally sweet fruit traditionally enjoyed in refreshing beverages and herbal preparations.", ImgBaelFruit),
                 }),
+            },
+            new()
+            {
+                new("map-pin", "Fresh Sourcing", "Harvested at peak freshness"),
+                new("sun", "Natural Drying", "Shade-dried or low-temperature drying to retain nutrients"),
+                new("sparkles", "Aroma Preservation", "Maintains natural fragrance and essential oils"),
+                new("shield-check", "No Chemicals", "Free from pesticides and artificial preservatives"),
+                new("landmark", "Traditional Use", "Used in Ayurveda and Sri Lankan cooking traditions"),
+                new("badge-check", "Clean Handling", "Carefully sorted and cleaned before packaging"),
             }),
 
         new("heritage", "Hela Heritage Collection", "Heritage", "landmark",
@@ -252,6 +284,15 @@ public static class ProductCatalog
                     new("Fish Ambul Thiyal", "Traditional sour fish curry known for its distinctive tangy taste and long-lasting freshness.", ImgAmbulThiyal),
                     new("Hela Achcharu", "A traditional Sri Lankan mixed vegetable pickle crafted with fresh ingredients and authentic local spices. Bursting with sweet, tangy, and spicy flavors, it brings the true taste of Sri Lankan heritage to every meal.", ImgMalayPickle),
                 }),
+            },
+            new()
+            {
+                new("scroll-text", "Authentic Recipes", "Based on traditional Sri Lankan methods"),
+                new("landmark", "Cultural Origin", "Inspired by generations of heritage practices"),
+                new("hand", "Handcrafted Approach", "Small-batch or traditional preparation methods"),
+                new("shield-check", "Natural Ingredients", "No artificial additives or preservatives"),
+                new("book-open", "Story Value", "Reflects Sri Lankan lifestyle and culture"),
+                new("badge-check", "Quality Consistency", "Maintains traditional taste standards"),
             }),
 
         new("rice-flour", "Hela Traditional Rice & Flour", "Rice & Flour", "wheat",
@@ -276,6 +317,16 @@ public static class ProductCatalog
                     new("Roasted Rice Flour", "A traditional flour essential for many Sri Lankan sweets and snacks.", ImgRiceFlour),
                     new("String Hopper Flour", "Specially prepared flour for making soft and delicious string hoppers.", ImgStringHopper),
                 }),
+            },
+            new()
+            {
+                new("map-pin", "Source", "Grown in selected Sri Lankan paddy fields"),
+                new("wheat", "Variety", "Traditional and nutritional rice varieties / premium grains"),
+                new("settings", "Processing", "Carefully milled and cleaned for purity"),
+                new("sparkles", "Texture & Cooking Quality", "Consistent grain size and good cooking performance"),
+                new("shield-check", "No Additives", "Free from bleaching agents or chemicals"),
+                new("clock", "Freshness", "Properly stored to maintain natural aroma"),
+                new("badge-check", "Food Safety", "Hygienically processed and packed"),
             }),
 
         new("tropical-fruits", "Hela Tropical Fruits", "Tropical Fruits", "cherry",
@@ -293,6 +344,16 @@ public static class ProductCatalog
                     new("Dried Tamarind", "Traditional tropical fruit with a sweet and sour flavor.", ImgTamarindPulp),
                     new("Dried Wood Apple", "Unique Sri Lankan fruit known for its distinctive taste.", ImgWoodApple),
                 }),
+            },
+            new()
+            {
+                new("cherry", "Fresh Fruit Selection", "Made from ripe, high-quality tropical fruits"),
+                new("sun", "Natural Drying", "Sun-dried or low-temperature dehydration"),
+                new("shield-check", "No Added Sugar", "Naturally sweet with no artificial sweeteners"),
+                new("palette", "Color & Flavor", "Preserves natural taste and fruity aroma"),
+                new("sparkles", "Nutritional Value", "Retains fiber and natural nutrients"),
+                new("settings", "Clean Processing", "Hygienically prepared and packed"),
+                new("badge-check", "Long Shelf Life", "Proper drying ensures freshness and durability"),
             }),
     };
 

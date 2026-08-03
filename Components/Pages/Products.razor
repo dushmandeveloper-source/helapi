@@ -69,6 +69,19 @@
 
                         <div class="p-6 md:p-7 flex flex-col flex-grow">
                             <p class="text-sm text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors duration-300 flex-grow">@category.CardText</p>
+
+                            @if (category.QualityPoints is { Count: > 0 })
+                            {
+                                <div class="mt-5 flex flex-wrap gap-x-4 gap-y-2">
+                                    @foreach (var point in category.QualityPoints.Take(3))
+                                    {
+                                        <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#5E8C31]">
+                                            <i data-lucide="@point.Icon" width="14" height="14"></i> @point.Label
+                                        </span>
+                                    }
+                                </div>
+                            }
+
                             <span class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#B97A4A] group-hover:text-[#5E8C31] transition-colors">
                                 View Products <i data-lucide="arrow-right" width="16" height="16" class="transform transition-transform group-hover:translate-x-1"></i>
                             </span>

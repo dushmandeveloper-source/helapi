@@ -55,6 +55,35 @@
             </div>
         </div>
 
+        @* Quality Points / Product Value *@
+        @if (current.QualityPoints is { Count: > 0 })
+        {
+            <section class="py-8 md:py-10 bg-[#DDE8C8]/30 border-b border-[#DDE8C8]/60">
+                <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
+                    <div class="flex items-center gap-2 text-[#5E8C31] font-semibold tracking-widest text-[11px] md:text-xs mb-4">
+                        <i data-lucide="shield-check" width="14" height="14"></i>
+                        WHY OUR @current.ShortName.ToUpperInvariant() STANDS APART
+                        <span class="flex-grow h-px bg-[#5E8C31]/30"></span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2.5 md:gap-3">
+                        @foreach (var point in current.QualityPoints)
+                        {
+                            <div class="bg-white rounded-xl border border-[#DDE8C8]/50 shadow-[0_2px_10px_rgb(0,0,0,0.03)] px-3.5 py-3 flex items-start gap-2.5 hover:shadow-[0_6px_16px_rgb(94,140,49,0.10)] transition-shadow duration-300">
+                                <div class="w-7 h-7 rounded-full bg-[#5E8C31]/10 flex items-center justify-center text-[#5E8C31] shrink-0 mt-0.5">
+                                    <i data-lucide="@point.Icon" width="14" height="14"></i>
+                                </div>
+                                <div class="min-w-0">
+                                    <span class="text-xs md:text-[13px] font-bold text-gray-900 leading-tight">@point.Label:</span>
+                                    <span class="text-xs md:text-[13px] text-gray-600 leading-snug">@point.Text</span>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+        }
+
         @* Products *@
         <section class="py-14 md:py-20 bg-[#FFF9F0]">
             <div class="container mx-auto px-4 lg:px-8 max-w-6xl">
