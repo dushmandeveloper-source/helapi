@@ -3,12 +3,12 @@
 @implements IDisposable
 @inject IJSRuntime JS
 
-<PageTitle>Hela Api Tea House</PageTitle>
+<PageTitle>Hela Api Tea</PageTitle>
 
 <div class="font-sans text-gray-800 bg-[#FFF9F0] overflow-x-clip">
     <SiteHeader />
 
-    @* Hero Section Carousel *@
+    @* Hero Banner Slider *@
     <section class="relative h-[80vh] min-h-[500px] lg:h-[700px] bg-gray-900 overflow-hidden flex items-center">
         @for (var i = 0; i < heroSlides.Count; i++)
         {
@@ -140,7 +140,7 @@
         </div>
     </section>
 
-    @* Our Products Preview - Tabbed (5 per category + See More) *@
+    @* Our Products Preview - Tabbed (6 per category + See More) *@
     <section class="py-12 md:py-16 bg-[#FFF9F0] overflow-hidden">
         <div class="container mx-auto px-4 lg:px-8">
 
@@ -164,7 +164,7 @@
                 }
             </div>
 
-            @* Preview grid: 5 products *@
+            @* Preview grid: 6 products *@
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                 @foreach (var item in PreviewItems)
                 {
@@ -260,7 +260,7 @@
     private bool animateHeroNext = true;
 
     private ProductCategory Current => ProductCatalog.BySlug(selectedSlug)!;
-    private IEnumerable<ProductItem> PreviewItems => Current.AllItems.Take(5);
+    private IEnumerable<ProductItem> PreviewItems => Current.AllItems.Take(6);
 
     private record HeroSlide(int Id, string Image, string Title1, string Title2, string Title3, string Title4, string Title5, string Title6, string Subtitle);
 

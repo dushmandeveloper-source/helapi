@@ -20,5 +20,6 @@
   "homepage": "https://github.com/dushmandeveloper-source/helapi#readme",
   "dependencies": {
     "graphify": "^1.0.0"
-  }
+  },
+  "devDependencies": {}
 }

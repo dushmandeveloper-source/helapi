@@ -3,9 +3,9 @@ const path = require('path');
 
 const icons = [
   'arrow-left', 'arrow-right', 'badge-check', 'book-open', 'check-circle',
-  'cherry', 'chevron-right', 'clock', 'eye', 'facebook', 'flame', 'globe',
-  'hand', 'instagram', 'landmark', 'leaf', 'mail', 'map-pin', 'menu',
-  'package-x', 'palette', 'phone', 'scroll-text', 'send', 'settings',
+  'cherry', 'chevron-right', 'clock', 'coffee', 'eye', 'facebook', 'flame',
+  'gift', 'globe', 'hand', 'instagram', 'landmark', 'leaf', 'mail', 'map-pin',
+  'menu', 'package-x', 'palette', 'phone', 'scroll-text', 'send', 'settings',
   'shield-check', 'shirt', 'sparkles', 'sprout', 'star', 'sun', 'target',
   'trophy', 'utensils', 'wheat', 'x'
 ];
@@ -13,8 +13,12 @@ const icons = [
 const iconsDir = path.join(__dirname, 'node_modules', 'lucide-static', 'icons');
 const result = {};
 
+// Some data-lucide names used in the markup were renamed upstream in newer lucide-static releases.
+const renames = { 'check-circle': 'circle-check' };
+
 for (const name of icons) {
-  const file = path.join(iconsDir, `${name}.svg`);
+  const sourceName = renames[name] || name;
+  const file = path.join(iconsDir, `${sourceName}.svg`);
   if (!fs.existsSync(file)) {
     console.error(`MISSING ICON: ${name}`);
     continue;
